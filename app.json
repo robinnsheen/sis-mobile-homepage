@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "sis-homepage",
+    "slug": "sis-homepage",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "sis-homepage"
+}
