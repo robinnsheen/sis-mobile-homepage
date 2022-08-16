@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8000/api/";
 
 /** API Class*/
 
@@ -11,10 +11,10 @@ class SISApi {
   static async request(endpoint, data = {}, method = "get") {
     // console.debug("API Call:", endpoint, data, method);
 
-    const url = `${BASE_URL}/${endpoint}`;
+    const url = `${BASE_URL}${endpoint}`;
 
     const headers = {
-      "Authorization": `Token ${token}`,
+      "Authorization": `Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073`,
       "Content-Type": "application/json",
     }
 
@@ -44,10 +44,27 @@ class SISApi {
   */
 
   static async getAssessmentSessionsList() {
-
+    console.log("hit api func");
     let res = await this.request(
-      `/api/assessmentsessions/`
+      `assessmentsessions/`
     );
+    console.log("AHHH");
+    console.log(res);
+    return res.data.results;
+  }
+
+  static async getAssessmentSessionsList2() {
+    console.log("hit api func2");
+    const res = await axios({
+      url: "http://localhost:8000/api/assessmentsessions/",
+      method: "get",
+      headers: {
+        "Authorization": "Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073",
+        "Content-Type": "application/json",
+      }
+    })
+    console.log("AHHH");
+    console.log(res);
     return res.data.results;
   }
 
