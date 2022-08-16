@@ -30,7 +30,7 @@ export default function App() {
 
     async function getAssessments() {
       const res = await axios({
-        url: "http://localhost:8000/api/assessmentsessions/",
+        url: "http://localhost:8000/api/cohort-items/",
         method: "get",
         headers: {
           "Authorization": "Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073",
@@ -86,7 +86,7 @@ export default function App() {
     <View style={styles.container}>
       {/* <Text>{ token }</Text> */}
       {assessmentSessions &&
-        <Text>{ assessmentSessions[0].title }</Text>
+        <Text>{ assessmentSessions[0].description }</Text>
       }
 
       <StatusBar style="auto" />
