@@ -15,34 +15,38 @@ export default function App() {
 
     async function hiBrian() {
 
-      const res = await axios({
-        url: "http://localhost:8000/api/-token/",
-        method: "post",
-        data: {
-          "username": "admin",
-          "password": "password"
-        }
-      })
-      setToken(res.data.token);
       // const res = await axios({
-      //   url: "http://localhost:8000/api/cohorts/r99",
-      //   method: "get",
-      //   header: {
-      //     Authorization: "Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073",
-      //     "Content-Type": "application/json"
+      //   url: "http://localhost:8000/api/-token/",
+      //   method: "post",
+      //   data: {
+      //     "username": "admin",
+      //     "password": "password"
       //   }
       // })
-      // setToken(res.data);
+      // console.log(res);
+      // setToken(res.data.token);
+      const res = await axios({
+        url: "http://localhost:8000/api/assessmentsessions/",
+        method: "get",
+        headers: {
+          "Authorization": "Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073",
+          "Content-Type": "application/json",
+          // "Accept": "*/*"
+          // "Cookie": "csrftoken=CTWACQNDXEwO2DEdQpUCXzvLpVhBr5rxxDQVRFWZxEfd8VngjR92g6XAQLRs6Q0a"
+        }
+      })
+      // console.log(res.data);
+      // setToken(res.data.results);
     }
     hiBrian();
     // const token = hiBrian();
     // setToken(token);
-  }, [token]);
+  }, []);
   
 
   return (
     <View style={styles.container}>
-      <Text>{ token }</Text>
+      <Text>{ token.title }</Text>
       <StatusBar style="auto" />
     </View>
   );
