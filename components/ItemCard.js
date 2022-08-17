@@ -3,14 +3,10 @@ import { ListItem, Text, View, StyleSheet } from "react-native";
 function ItemCard({ item }) {
   // console.log("hit item card", item);
   return (
-    <View>
-      <View style={styles.container}>
-        <View style={styles.dates}>
-          <Text>{item.start_date}</Text>
-        </View>
-        <View>
-          <Text>{item.start_at}</Text>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.dates}>
+        <Text>{Date(item.start_date).toDateString()}</Text>
+        <Text>{Date(item.start_at).toTimeString()}</Text>
       </View>
       <View style={styles.textArea}>
         <Text>{item.title}</Text>
@@ -33,7 +29,7 @@ const styles = StyleSheet.create(
       flex: 1,
     },
   }
-)
+);
 
 
 export default ItemCard;
