@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 import axios from "axios";
 import SISapi from "./api";
+import { FlatList } from 'react-native-web';
+import ItemCard from "./components/ItemCard";
 
 
 export default function App() {
@@ -34,9 +36,14 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {items &&
-        <ScrollView>
-          {items.map( i => <Text>{i.title}</Text>)}
-        </ScrollView>
+          <List>
+            <FlatList
+            data={items}
+            renderItem={({ item }) => (
+              <ItemCard item={item} />
+            )}
+            />
+          </List>
       }
       <StatusBar style="auto" />
     </SafeAreaView>
