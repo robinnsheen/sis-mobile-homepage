@@ -34,12 +34,16 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {items &&
+        <View>
           <FlatList
             data={items}
             renderItem={({ item }) => (
               <ItemCard item={item} />
             )}
+            keyExtractor={(i) => `${i.id}${i.type}`}
           />
+          <Text>LIST ENDS HERE</Text>
+        </View>
       }
       <StatusBar style="auto" />
     </SafeAreaView>
