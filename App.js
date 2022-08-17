@@ -3,14 +3,12 @@ import { StyleSheet } from 'react-native';
 import axios from "axios";
 import Home from "./pages/Home";
 import Assessments from "./pages/Assessments";
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 export default function App() {
 
   const [items, setItems] = useState("");
-  console.log("items are", items);
+  // console.log("items are", items);
   useEffect(function damnitBrian() {
     console.log("in use effect");
 
@@ -23,7 +21,7 @@ export default function App() {
           "Content-Type": "application/json",
         }
       });
-      console.log(res);
+      // console.log(res);
       setItems(res.data.results);
     }
 
@@ -33,25 +31,26 @@ export default function App() {
 
   }, []);
 
-  const Drawer = createDrawerNavigator();
+  // const Drawer = createDrawerNavigator();
 
-  function MyDrawer() {
-    return (
-      <Drawer.Navigator useLegacyImplementation>
-        <Drawer.Screen name="Home">
-          {<Home items={items} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="Assessments">
-          {<Assessments items={items} />}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    );
-  }
+  // function MyDrawer() {
+  //   return (
+  //     <Drawer.Navigator useLegacyImplementation>
+  //       <Drawer.Screen name="Home">
+  //         {<Home items={items} />}
+  //       </Drawer.Screen>
+  //       <Drawer.Screen name="Assessments">
+  //         {<Assessments items={items} />}
+  //       </Drawer.Screen>
+  //     </Drawer.Navigator>
+  //   );
+  // }
 
   return (
-    <NavigationContainer>
-      <MyDrawer />
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <MyDrawer />
+    // </NavigationContainer>
+    <Home items={items}/>
   );
 }
 

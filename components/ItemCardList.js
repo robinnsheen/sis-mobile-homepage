@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList} from 'react-native';
-import ItemCard from "./components/ItemCard";
+import ItemCard from "./ItemCard";
 
 function ItemCardList({items}) {
   return (

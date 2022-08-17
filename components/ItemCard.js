@@ -1,4 +1,4 @@
-import { ListItem, Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
 function ItemCard({ item }) {
   // console.log("hit item card", item);

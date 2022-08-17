@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
-import ItemCard from '../components/ItemCard';
+import ItemCardList from '../components/ItemCardList';
 
 function Home({ items }) {
   return (
@@ -10,7 +10,6 @@ function Home({ items }) {
           <ItemCardList items={items} />
         </View>
       }
-      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
