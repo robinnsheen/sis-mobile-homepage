@@ -1,16 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, FlatList, List } from 'react-native';
 import axios from "axios";
-import SISapi from "./api";
-import { FlatList } from 'react-native-web';
 import ItemCard from "./components/ItemCard";
 
 
 export default function App() {
 
   const [items, setItems] = useState("");
-
+  console.log("items are", items);
   useEffect(function damnitBrian() {
     console.log("in use effect");
 
@@ -22,7 +20,7 @@ export default function App() {
           "Authorization": "Token 71ba9fbb567c76e604ac05dd28ec8a3bfea61073",
           "Content-Type": "application/json",
         }
-      })
+      });
       console.log(res);
       setItems(res.data.results);
     }
@@ -36,14 +34,12 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {items &&
-          <List>
-            <FlatList
+          <FlatList
             data={items}
             renderItem={({ item }) => (
               <ItemCard item={item} />
             )}
-            />
-          </List>
+          />
       }
       <StatusBar style="auto" />
     </SafeAreaView>
