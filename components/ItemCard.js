@@ -1,8 +1,7 @@
-import { ListItem, Text } from "react-native";
-import { View } from "react-native-web";
+import { ListItem, Text, View, StyleSheet } from "react-native";
 
 function ItemCard({ item }) {
-  console.log("hit item card", item);
+  // console.log("hit item card", item);
   return (
     <View>
       <View style={styles.container}>
@@ -28,7 +27,7 @@ const styles = StyleSheet.create(
     },
     dates: {
       flex: 1,
-      flexDirection: row,
+      flexDirection: "row",
     },
     textArea: {
       flex: 1,
