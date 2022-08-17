@@ -1,8 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, FlatList, List } from 'react-native';
+import { StyleSheet } from 'react-native';
 import axios from "axios";
-import ItemCard from "./components/ItemCard";
+import Home from "./pages/Home";
+import Assessments from "./pages/Assessments";
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 export default function App() {
@@ -31,21 +33,25 @@ export default function App() {
 
   }, []);
 
+  const Drawer = createDrawerNavigator();
+
+  function MyDrawer() {
+    return (
+      <Drawer.Navigator useLegacyImplementation>
+        <Drawer.Screen name="Home">
+          {<Home items={items} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="Assessments">
+          {<Assessments items={items} />}
+        </Drawer.Screen>
+      </Drawer.Navigator>
+    );
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      {items &&
-        <View>
-          <FlatList
-            data={items}
-            renderItem={({ item }) => (
-              <ItemCard item={item} />
-            )}
-            keyExtractor={(i) => `${i.id}${i.type}`}
-          />
-        </View>
-      }
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <MyDrawer />
+    </NavigationContainer>
   );
 }
 

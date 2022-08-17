@@ -2,6 +2,13 @@ import { ListItem, Text, View, StyleSheet } from "react-native";
 
 function ItemCard({ item }) {
   // console.log("hit item card", item);
+  const types = {
+    "V": "Event",
+    "E": "Exercise",
+    "L": "Lecture",
+    "A": "Assessment"
+  }
+
   const fullDateTime = new Date(item.start_date);
   const date = fullDateTime.toLocaleDateString(
     'en-us',
@@ -27,7 +34,7 @@ function ItemCard({ item }) {
       <View style={styles.textArea}>
         <View style={styles.header}>
           <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.type}>({item.type})</Text>
+          <Text style={styles.type}>({types[item.type]})</Text>
         </View>
         <Text numberOfLines={1}>{item.description}</Text>
       </View>
