@@ -42,7 +42,6 @@ export default function App() {
             )}
             keyExtractor={(i) => `${i.id}${i.type}`}
           />
-          <Text>LIST ENDS HERE</Text>
         </View>
       }
       <StatusBar style="auto" />
