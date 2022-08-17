@@ -3,10 +3,18 @@ import { ListItem, Text } from "react-native";
 function ItemCard({ item }) {
   console.log("hit item card", item);
   return (
-    // <ListItem
-    //   title={`${item.title}`}
-    // />
-    <Text>{item.title}</Text>
+    <View>
+      <View>
+        <Text>{item.start_date}</Text>
+      </View>
+      <View>
+        <Text>{item.start_at}</Text>
+      </View>
+      <View>
+        <Text>{item.title}</Text>
+        <Text>{item.description}</Text>
+      </View>
+    </View>
   );
 }
 
