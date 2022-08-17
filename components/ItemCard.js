@@ -1,21 +1,40 @@
-import { ListItem, Text, View } from "react-native";
+import { ListItem, Text } from "react-native";
+import { View } from "react-native-web";
 
 function ItemCard({ item }) {
-  // console.log("hit item card", item);
+  console.log("hit item card", item);
   return (
     <View>
-      <View>
-        <Text>{item.start_date}</Text>
+      <View style={styles.container}>
+        <View style={styles.dates}>
+          <Text>{item.start_date}</Text>
+        </View>
+        <View>
+          <Text>{item.start_at}</Text>
+        </View>
       </View>
-      <View>
-        <Text>{item.start_at}</Text>
-      </View>
-      <View>
+      <View style={styles.textArea}>
         <Text>{item.title}</Text>
         <Text>{item.description}</Text>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create(
+  {
+    container: {
+      flex: 1,
+    },
+    dates: {
+      flex: 1,
+      flexDirection: row,
+    },
+    textArea: {
+      flex: 1,
+    },
+  }
+)
+
 
 export default ItemCard;
