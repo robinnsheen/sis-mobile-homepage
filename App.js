@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Details from "./components/Details";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Navigator from './routes/Drawer';
 
 /** App Component
  *  Gets list of cohort item objects from SIS API.
@@ -42,32 +43,34 @@ export default function App() {
 
   }, []);
 
-  const Stack = createNativeStackNavigator();
+  return <Navigator />;
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#e46b66',
-          },
-          headerTitleStyle: {
-            fontFamily: 'Georgia',
-            fontSize: 20,
-          }
-        }}
-      >
-        <Stack.Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
-          {(props) => <Home items={items} />}
-        </Stack.Screen>
-        <Stack.Screen name="Details">
-          {(props) => <Details items={items} />}
-        </Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
+//   const Stack = createNativeStackNavigator();
 
-  );
-}
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator
+//         screenOptions={{
+//           headerStyle: {
+//             backgroundColor: '#e46b66',
+//           },
+//           headerTitleStyle: {
+//             fontFamily: 'Georgia',
+//             fontSize: 20,
+//           }
+//         }}
+//       >
+//         <Stack.Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
+//           {(props) => <Home items={items} />}
+//         </Stack.Screen>
+//         <Stack.Screen name="Details">
+//           {(props) => <Details items={items} />}
+//         </Stack.Screen>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
