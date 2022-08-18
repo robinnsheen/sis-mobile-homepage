@@ -52,7 +52,9 @@ function ItemCard({ item }) {
         <View style={styles.textArea}>
           <View style={styles.header}>
             <Text style={[styles.title, styles.text]}>{item.title}</Text>
-            <Text style={[styles.type, styles.text]}>({types[item.type]})</Text>
+            <Text style={[styles.type, styles.text]}>
+              ({types[item.type]})
+            </Text>
           </View>
           <Text style={[styles.text, styles.description]} numberOfLines={1}>
             {item.description}
@@ -78,13 +80,14 @@ const styles = StyleSheet.create(
       paddingBottom: 6,
     },
     calendar: {
-      fontSize: 12,
+      fontSize: 17,
     },
     textArea: {
       flex: 1,
     },
     text: {
       fontFamily: 'Georgia',
+      paddingBottom: 5,
     },
     header: {
       flex: 1,
@@ -96,14 +99,15 @@ const styles = StyleSheet.create(
     title: {
       paddingRight: 6,
       fontWeight: "800",
-      fontSize: 14,
+      fontSize: 19,
       color: '#00449e',
     },
     type: {
       color: "darkgray",
+      fontSize: 16,
     },
     description: {
-      fontSize: 12,
+      fontSize: 17,
     }
   }
 );
