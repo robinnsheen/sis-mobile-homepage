@@ -1,10 +1,15 @@
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
-function Details({ navigation }) {
-  console.log("hit me");
+function Details({ navigation, items, id, type }) {
+  console.log("hit me in details");
+  const route = useRoute();
+  const { id, type } = route.params;
+  const item = items.filter(i => i.id === id && i.type == type);
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+      <Text>{item.title}</Text>
+      <Text>id: {id}</Text>
+      <Text>type: {type}</Text>
     </SafeAreaView>
   );
 }

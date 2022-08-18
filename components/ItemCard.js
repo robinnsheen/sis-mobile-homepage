@@ -29,7 +29,11 @@ function ItemCard({ item }) {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+    <TouchableOpacity onPress={() =>
+      navigation.navigate('Details', {
+        id: item.id,
+        type: item.type,
+      })}>
       <View style={styles.container}>
         <View style={styles.dates}>
           <Text style={[styles.text, styles.calendar]}>{date}</Text>
