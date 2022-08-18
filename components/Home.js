@@ -1,10 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import ItemCardList from '../components/ItemCardList';
+import { useHeaderHeight } from '@react-navigation/elements';
+
 
 function Home({ items }) {
+  const headerHeight = useHeaderHeight();
+
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>
+          UPCOMING
+        </Text>
+      </View>
       {items &&
         <View>
           <ItemCardList items={items} />
@@ -21,6 +30,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    marginTop: 60,
+    marginBottom: 10,
+  },
+  title: {
+    fontFamily: 'Georgia',
+    fontSize: 17,
+    color: '#666'
+  }
 });
 
 export default Home;

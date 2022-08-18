@@ -4,7 +4,7 @@ import axios from "axios";
 import Home from "./components/Home";
 import Assessments from "./pages/Assessments";
 import { NavigationContainer } from '@react-navigation/native';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function App() {
 
@@ -47,9 +47,26 @@ export default function App() {
   //   );
   // }
 
+  const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
-      <Home items={items} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#e46b66',
+          },
+          headerTitleStyle: {
+            fontFamily: 'Georgia',
+            fontSize: 20,
+          }
+        }}
+      >
+        <Stack.Screen name="Home" options={{title: "{ R } Rithm 99"}}>
+          {(props) => <Home items={items}/>}
+        </Stack.Screen>
+      </Stack.Navigator>
+      {/* <Home items={items} /> */}
     </NavigationContainer>
 
   );

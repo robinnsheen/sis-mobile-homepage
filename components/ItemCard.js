@@ -8,35 +8,47 @@ function ItemCard({ item }) {
     "L": "Lecture",
     "A": "Assessment"
   }
-
-  const fullDateTime = new Date(item.start_date);
-  const date = fullDateTime.toLocaleDateString(
+  const date = new Date(item.start_date).toLocaleDateString(
     'en-us',
     {
       weekday: "short",
       day: "numeric",
       month: "numeric"
-    })
-  const time = fullDateTime.toLocaleTimeString(
+    });
+  const startTime = new Date(item.start_at).toLocaleTimeString(
     'en-us',
     {
       hour: "numeric",
       minute: "numeric"
     }
   );
+  // const date = fullDateTime.toLocaleDateString(
+  //   'en-us',
+  //   {
+  //     weekday: "short",
+  //     day: "numeric",
+  //     month: "numeric"
+  //   })
+  // const time = fullDateTime.toLocaleTimeString(
+  //   'en-us',
+  //   {
+  //     hour: "numeric",
+  //     minute: "numeric"
+  //   }
+  // );
 
   return (
     <View style={styles.container}>
       <View style={styles.dates}>
-        <Text>{date}</Text>
-        <Text>{time}</Text>
+        <Text style={[styles.text, styles.calendar]}>{date}</Text>
+        <Text style={[styles.text, styles.calendar]}>{startTime}</Text>
       </View>
       <View style={styles.textArea}>
         <View style={styles.header}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.type}>({types[item.type]})</Text>
+          <Text style={[styles.title, styles.text]}>{item.title}</Text>
+          <Text style={[styles.type, styles.text]}>({types[item.type]})</Text>
         </View>
-        <Text numberOfLines={1}>{item.description}</Text>
+        <Text style={[styles.text, styles.description]} numberOfLines={1}>{item.description}</Text>
       </View>
     </View>
   );
@@ -46,31 +58,43 @@ const styles = StyleSheet.create(
   {
     container: {
       flex: 1,
-      padding: 8,
-      borderWidth: 2,
+      padding: 15,
+      borderTopWidth: 1,
+      borderColor: 'darkgray',
     },
     dates: {
       flex: 1,
       flexDirection: "row",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      paddingBottom: 6,
+    },
+    calendar: {      
+      fontSize: 12,
     },
     textArea: {
       flex: 1,
+    },
+    text: {
+      fontFamily: 'Georgia',
     },
     header: {
       flex: 1,
       flexDirection: "row",
       justifyContent: "flex-start",
       alignItems: "center",
+      paddingBottom: 6,
     },
     title: {
-      paddingTop: 3,
-      paddingBottom: 3,
       paddingRight: 6,
-      fontWeight: "600"
+      fontWeight: "800",
+      fontSize: 14,
+      color: '#00449e',
     },
     type: {
-      color: "darkgray"
+      color: "darkgray",
+    },
+    description: {
+      fontSize: 12,
     }
   }
 );
