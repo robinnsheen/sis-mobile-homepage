@@ -13,7 +13,7 @@ function Home({ items, navigation }) {
       </View>
       {items &&
         <View>
-          <ItemCardList items={items} navigation={navigation}/>
+          <ItemCardList items={items} navigation={props.navigation}/>
         </View>
       }
     </SafeAreaView>

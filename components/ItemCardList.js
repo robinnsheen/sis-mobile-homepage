@@ -7,7 +7,7 @@ function ItemCardList({items, navigation}) {
     <FlatList
       data={items}
       renderItem={({ item }) => (
-        <ItemCard item={item} navigation={navigation}/>
+        <ItemCard item={item} navigation={props.navigation}/>
       )}
       keyExtractor={(i) => `${i.id}${i.type}`}
     />);
@@ -15,7 +15,7 @@ function ItemCardList({items, navigation}) {
 
 // const styles = StyleSheet.create(
 //   {
-    
+
 //   }
 // );
 
