@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import axios from "axios";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 import Assessments from "./pages/Assessments";
+import { NavigationContainer } from '@react-navigation/native';
 
 
 export default function App() {
@@ -47,10 +48,10 @@ export default function App() {
   // }
 
   return (
-    // <NavigationContainer>
-    //   <MyDrawer />
-    // </NavigationContainer>
-    <Home items={items}/>
+    <NavigationContainer>
+      <Home items={items} />
+    </NavigationContainer>
+
   );
 }
 
