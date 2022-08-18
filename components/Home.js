@@ -1,11 +1,8 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import ItemCardList from '../components/ItemCardList';
-import { useHeaderHeight } from '@react-navigation/elements';
-
 
 function Home({ items }) {
-  const headerHeight = useHeaderHeight();
 
   return (
     <SafeAreaView style={styles.container}>

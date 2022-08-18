@@ -65,8 +65,9 @@ export default function App() {
         <Stack.Screen name="Home" options={{title: "{ R } Rithm 99"}}>
           {(props) => <Home items={items}/>}
         </Stack.Screen>
+        <Stack.Screen name="Details" component={Details}>
+        </Stack.Screen>
       </Stack.Navigator>
-      {/* <Home items={items} /> */}
     </NavigationContainer>
 
   );

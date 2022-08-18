@@ -1,13 +1,15 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function ItemCard({ item }) {
+function ItemCard({ item, navigate }) {
   // console.log("hit item card", item);
   const types = {
     "V": "Event",
     "E": "Exercise",
     "L": "Lecture",
     "A": "Assessment"
-  }
+  };
   const date = new Date(item.start_date).toLocaleDateString(
     'en-us',
     {
@@ -22,35 +24,26 @@ function ItemCard({ item }) {
       minute: "numeric"
     }
   );
-  // const date = fullDateTime.toLocaleDateString(
-  //   'en-us',
-  //   {
-  //     weekday: "short",
-  //     day: "numeric",
-  //     month: "numeric"
-  //   })
-  // const time = fullDateTime.toLocaleTimeString(
-  //   'en-us',
-  //   {
-  //     hour: "numeric",
-  //     minute: "numeric"
-  //   }
-  // );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.dates}>
-        <Text style={[styles.text, styles.calendar]}>{date}</Text>
-        <Text style={[styles.text, styles.calendar]}>{startTime}</Text>
-      </View>
-      <View style={styles.textArea}>
-        <View style={styles.header}>
-          <Text style={[styles.title, styles.text]}>{item.title}</Text>
-          <Text style={[styles.type, styles.text]}>({types[item.type]})</Text>
+    <TouchableOpacity>
+      <View style={styles.container}
+        onPress={() => NavigationContainer.navigate('Details')}>
+        <View style={styles.dates}>
+          <Text style={[styles.text, styles.calendar]}>{date}</Text>
+          <Text style={[styles.text, styles.calendar]}>{startTime}</Text>
         </View>
-        <Text style={[styles.text, styles.description]} numberOfLines={1}>{item.description}</Text>
+        <View style={styles.textArea}>
+          <View style={styles.header}>
+            <Text style={[styles.title, styles.text]}>{item.title}</Text>
+            <Text style={[styles.type, styles.text]}>({types[item.type]})</Text>
+          </View>
+          <Text style={[styles.text, styles.description]} numberOfLines={1}>
+            {item.description}
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -68,7 +61,7 @@ const styles = StyleSheet.create(
       justifyContent: "space-between",
       paddingBottom: 6,
     },
-    calendar: {      
+    calendar: {
       fontSize: 12,
     },
     textArea: {
