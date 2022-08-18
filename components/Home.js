@@ -10,6 +10,7 @@ import ItemCardList from '../components/ItemCardList';
  *
  *  State: none
  */
+
 function Home({ items }) {
 
   return (
@@ -19,9 +20,10 @@ function Home({ items }) {
           UPCOMING
         </Text>
       </View>
+      
       {items &&
         <View>
-          <ItemCardList items={items}/>
+          <ItemCardList items={items} />
         </View>
       }
     </SafeAreaView>

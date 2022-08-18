@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Details from "./components/Details";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Navigator from './routes/Drawer';
+import { AppNavigator } from './routes/Drawer';
 
 /** App Component
  *  Gets list of cohort item objects from SIS API.
@@ -20,10 +20,8 @@ import Navigator from './routes/Drawer';
 export default function App() {
 
   const [items, setItems] = useState("");
-  // console.log("items are", items);
-  useEffect(function damnitBrian() {
-    console.log("in use effect");
 
+  useEffect(function damnitBrian() {
     async function getItems() {
       const res = await axios({
         url: "http://localhost:8000/api/cohort-items/",
@@ -33,7 +31,6 @@ export default function App() {
           "Content-Type": "application/json",
         }
       });
-      // console.log(res);
       setItems(res.data.results);
     }
 
@@ -43,34 +40,41 @@ export default function App() {
 
   }, []);
 
-  return <Navigator />;
+  //TODO: Attempt at adding drawer nav
+  // return <AppNavigator items={items}/>;
 
-//   const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator();
 
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator
-//         screenOptions={{
-//           headerStyle: {
-//             backgroundColor: '#e46b66',
-//           },
-//           headerTitleStyle: {
-//             fontFamily: 'Georgia',
-//             fontSize: 20,
-//           }
-//         }}
-//       >
-//         <Stack.Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
-//           {(props) => <Home items={items} />}
-//         </Stack.Screen>
-//         <Stack.Screen name="Details">
-//           {(props) => <Details items={items} />}
-//         </Stack.Screen>
-//       </Stack.Navigator>
-//     </NavigationContainer>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#e46b66',
+          },
+          headerTitleStyle: {
+            fontFamily: 'Georgia',
+            fontSize: 20,
+          },
+          headerBackTitle: 'Home',
+          headerBackTitleStyle: {
+            fontFamily: 'Georgia',
+          }
+        }}
+      >
+        <Stack.Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
+          {(props) => <Home items={items} />}
+        </Stack.Screen>
 
-//   );
-// }
+        <Stack.Screen name="Details">
+          {(props) => <Details items={items} />}
+        </Stack.Screen>
+
+      </Stack.Navigator>
+    </NavigationContainer>
+
+  );
+}
 
 const styles = StyleSheet.create({
   container: {

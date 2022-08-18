@@ -9,6 +9,7 @@ import ItemCard from "./ItemCard";
  *
  *  State: none
  */
+
 function ItemCardList({ items }) {
   return (
     <FlatList
@@ -20,10 +21,5 @@ function ItemCardList({ items }) {
     />);
 }
 
-// const styles = StyleSheet.create(
-//   {
-
-//   }
-// );
 
 export default ItemCardList;

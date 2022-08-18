@@ -1,4 +1,5 @@
-import { createStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 import Details from '../components/Details';
 import Home from '../components/Home';
 
@@ -17,11 +18,27 @@ const screens = {
   }
 }
 
-const HomeStack = createStackNavigator(screens, {
-  defaultNavigationOptions: {
-    headerTintColor: '#444',
-    headerStyle: {backgroundColor: '#eee', height: 60}
-  }
-});
+const { Navigator, Screen } = createNativeStackNavigator();
 
-export default (HomeStack)
+export const HomeStack = (items) => (
+    <Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#e46b66',
+        },
+        headerTitleStyle: {
+          fontFamily: 'Georgia',
+          fontSize: 20,
+        }
+      }}
+    >
+      <Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
+        {(props) => <Home items={items} />}
+      </Screen>
+      <Screen name="Details">
+        {(props) => <Details items={items} />}
+      </Screen>
+    </Navigator>
+)
+
+export default HomeStack;

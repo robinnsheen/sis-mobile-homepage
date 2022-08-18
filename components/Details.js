@@ -10,13 +10,12 @@ import { useRoute } from '@react-navigation/native';
  *
  *  State: none
  */
+
 function Details({ items }) {
 
   const route = useRoute();
   const { id, type } = route.params;
   const item = items.filter(i => i.id === id && i.type == type)[0];
-
-  // console.log("item", item);
 
   const types = {
     "V": "Event",
@@ -48,23 +47,20 @@ function Details({ items }) {
         <Text style={styles.title}>
           {item.title}
         </Text>
-        {/* <Text style={[styles.type, styles.text]}>({types[item.type]})</Text> */}
       </View>
       <Text style={[styles.text, styles.calendar]}>{date}, {startTime}</Text>
 
-      <View style={styles.content}>
-        <Text style={[styles.text, styles.description]}>{item.description}</Text>
-      </View>
-
       <View>
-        <Text style={[styles.text, styles.staff]}>STAFF</Text>
-        <View style={{flexDirection:'row'}}>
-          <Text style={[styles.text, styles.staff]}>{item.dri_id}</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={[styles.text, styles.staff, { color: '#e46b66' }]}>{item.dri_id}</Text>
           {item.staff_ids.map(
             s => <Text style={[styles.text, styles.staff]}>{s}</Text>)}
         </View>
       </View>
 
+      <View style={styles.content}>
+        <Text style={[styles.text, styles.description]}>{item.description}</Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   staff: {
-    // color: 'darkgray',
+    color: 'darkgray',
     borderColor: 'darkgrey',
     borderBottomWidth: 3,
     padding: 5,

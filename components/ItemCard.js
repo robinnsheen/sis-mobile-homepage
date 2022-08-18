@@ -13,8 +13,9 @@ import { useNavigation } from '@react-navigation/native';
  *
  *  State: none
  */
+
 function ItemCard({ item }) {
-  // console.log("hit item card", item);
+
   const types = {
     "V": "Event",
     "E": "Exercise",
@@ -44,11 +45,13 @@ function ItemCard({ item }) {
         id: item.id,
         type: item.type,
       })}>
+
       <View style={styles.container}>
         <View style={styles.dates}>
           <Text style={[styles.text, styles.calendar]}>{date}</Text>
           <Text style={[styles.text, styles.calendar]}>{startTime}</Text>
         </View>
+
         <View style={styles.textArea}>
           <View style={styles.header}>
             <Text style={[styles.title, styles.text]}>{item.title}</Text>
@@ -56,10 +59,12 @@ function ItemCard({ item }) {
               ({types[item.type]})
             </Text>
           </View>
+
           <Text style={[styles.text, styles.description]} numberOfLines={1}>
             {item.description}
           </Text>
         </View>
+
       </View>
     </TouchableOpacity>
   );
@@ -80,7 +85,7 @@ const styles = StyleSheet.create(
       paddingBottom: 6,
     },
     calendar: {
-      fontSize: 17,
+      fontSize: 15,
     },
     textArea: {
       flex: 1,
@@ -107,7 +112,7 @@ const styles = StyleSheet.create(
       fontSize: 16,
     },
     description: {
-      fontSize: 17,
+      fontSize: 15,
     }
   }
 );
