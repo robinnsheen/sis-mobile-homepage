@@ -1,6 +1,15 @@
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
+/** Details Component
+ *  Filters a cohort item by type and id.
+ *  Renders details of cohort item.
+ *
+ *  Props:
+ *  - items: [{title, description, id, start_date, description, ...}, ...]
+ *
+ *  State: none
+ */
 function Details({ items }) {
 
   const route = useRoute();

@@ -2,9 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import axios from "axios";
 import Home from "./components/Home";
-import Details from "./components/Details"
+import Details from "./components/Details";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+/** App Component
+ *  Gets list of cohort item objects from SIS API.
+ *  Manages navigation between screens (Home, Details).
+ *
+ *  Props: none
+ *
+ *  State:
+ *  - items: [{title, description, id, start_date, description, ...}, ...]
+ */
 
 export default function App() {
 
@@ -32,21 +42,6 @@ export default function App() {
 
   }, []);
 
-  // const Drawer = createDrawerNavigator();
-
-  // function MyDrawer() {
-  //   return (
-  //     <Drawer.Navigator useLegacyImplementation>
-  //       <Drawer.Screen name="Home">
-  //         {<Home items={items} />}
-  //       </Drawer.Screen>
-  //       <Drawer.Screen name="Assessments">
-  //         {<Assessments items={items} />}
-  //       </Drawer.Screen>
-  //     </Drawer.Navigator>
-  //   );
-  // }
-
   const Stack = createNativeStackNavigator();
 
   return (
@@ -62,8 +57,8 @@ export default function App() {
           }
         }}
       >
-        <Stack.Screen name="Home" options={{title: "{ R } Rithm 99"}}>
-          {(props) => <Home items={items}/>}
+        <Stack.Screen name="Home" options={{ title: "{ R } Rithm 99" }}>
+          {(props) => <Home items={items} />}
         </Stack.Screen>
         <Stack.Screen name="Details">
           {(props) => <Details items={items} />}

@@ -3,6 +3,16 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
+
+/** ItemCard Component
+ *  Renders a touchable card with summary of a cohort item's details.
+ *  Pressing a card routes to the corresponding cohort item's details screen.
+ *
+ *  Props:
+ *  - item: {title, description, id, start_date, description, ...}
+ *
+ *  State: none
+ */
 function ItemCard({ item }) {
   // console.log("hit item card", item);
   const types = {

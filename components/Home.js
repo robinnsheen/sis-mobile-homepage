@@ -2,6 +2,14 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import ItemCardList from '../components/ItemCardList';
 
+/** Home Component
+ *  Renders a list of cohort items that link to their details screen.
+ *
+ *  Props:
+ *  - items: [{title, description, id, start_date, description, ...}, ...]
+ *
+ *  State: none
+ */
 function Home({ items }) {
 
   return (
