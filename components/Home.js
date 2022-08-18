@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import ItemCardList from '../components/ItemCardList';
 
-function Home({ items, navigation }) {
+function Home({ items }) {
 
   return (
     <SafeAreaView style={styles.container}>
@@ -13,7 +13,7 @@ function Home({ items, navigation }) {
       </View>
       {items &&
         <View>
-          <ItemCardList items={items} navigation={props.navigation}/>
+          <ItemCardList items={items}/>
         </View>
       }
     </SafeAreaView>

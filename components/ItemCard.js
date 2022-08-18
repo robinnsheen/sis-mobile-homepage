@@ -1,8 +1,9 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
-function ItemCard({ item, navigation }) {
+function ItemCard({ item }) {
   // console.log("hit item card", item);
   const types = {
     "V": "Event",
@@ -24,6 +25,8 @@ function ItemCard({ item, navigation }) {
       minute: "numeric"
     }
   );
+
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('Details')}>
