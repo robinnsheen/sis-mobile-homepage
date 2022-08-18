@@ -2,12 +2,12 @@ import { StyleSheet, FlatList} from 'react-native';
 import ItemCard from "./ItemCard";
 
 
-function ItemCardList({items}) {
+function ItemCardList({items, navigation}) {
   return (
     <FlatList
       data={items}
       renderItem={({ item }) => (
-        <ItemCard item={item} />
+        <ItemCard item={item} navigation={navigation}/>
       )}
       keyExtractor={(i) => `${i.id}${i.type}`}
     />);

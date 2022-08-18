@@ -1,8 +1,8 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function ItemCard({ item, navigate }) {
+function ItemCard({ item, navigation }) {
   // console.log("hit item card", item);
   const types = {
     "V": "Event",
@@ -26,9 +26,8 @@ function ItemCard({ item, navigate }) {
   );
 
   return (
-    <TouchableOpacity>
-      <View style={styles.container}
-        onPress={() => NavigationContainer.navigate('Details')}>
+    <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+      <View style={styles.container}>
         <View style={styles.dates}>
           <Text style={[styles.text, styles.calendar]}>{date}</Text>
           <Text style={[styles.text, styles.calendar]}>{startTime}</Text>

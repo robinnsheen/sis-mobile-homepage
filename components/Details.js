@@ -1,6 +1,7 @@
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
-function Details() {
+function Details({ navigation }) {
+  console.log("hit me");
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
